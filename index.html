@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbow Yélli Family | Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+    
+
+    <!-- Diaporama (Images de la famille) -->
+    <div class="slider">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://unsplash.com')"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://unsplash.com')"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://unsplash.com')"></div>
+    </div>
+
+    <main class="hero-section">
+      <main class="hero-section">
+    <div class="glass-morphism">
+        <!-- LOGO AVEC ANIMATION D'ENTRÉE -->
+        <div class="logo-animation-wrapper">
+            <img src="SG.png" alt="Blason Famille Mbow Yélli" class="family-logo-img"><br><br>
+            <div class="gold-shine"></div>
+        </div>
+
+        <h1 class="fade-in-delayed">Mbow Yélli Family</h1>
+        <div class="divider fade-in-delayed"></div>
+        <p class="tagline fade-in-delayed">L'héritage authentique d'une lignée d'exception</p>
+        
+        <form id="registration-form" class="fade-in-delayed">
+            <p class="instruction">Inscrivez-vous pour rejoindre l'espace officiel</p>
+            <div class="input-group">
+                <input type="text" placeholder="Prénom & Nom" required>
+                <input type="email" placeholder="Votre Email" required>
+            </div>
+            <button type="submit" class="btn-submit">Valider mon identité</button>
+        </form>
+
+        <div id="official-link-container" class="hidden">
+            <p class="welcome-msg">Accès accordé. Bienvenue chez vous.</p>
+            <a href="#" class="btn-official">Entrer dans le Site Officiel</a>
+        </div>
+    </div>
+</main>
+
+    </main>
+
+    <script>
+        // Gestion du carrousel
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 6000);
+
+        // Transition vers le site officiel
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.classList.add('hidden');
+                document.getElementById('official-link-container').classList.remove('hidden');
+                document.getElementById('official-link-container').style.animation = 'fadeInUp 1s ease forwards';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
